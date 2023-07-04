@@ -1,0 +1,281 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-size: 12px;
+}
+html {
+    scroll-behavior: smooth;
+  }
+
+$primaryColor:#E57D21;
+$secondaryColor:#2D3435;
+$bgColor:#fff;
+
+//MIXIN
+@mixin center($x) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $x;
+}
+@mixin centerLeft {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+@mixin fluid-type($font-min, $font-max, $screen-min, $screen-max) {
+    font-size: #{$font-min}px;
+  
+    @media only screen and (min-width: #{$screen-min}px) {
+      font-size: calc(
+        #{$font-min}px + #{($font-max - $font-min)} * (100vw - #{$screen-min}px) / (#{$screen-max} - #{$screen-min})
+      );
+    }
+  
+    @media only screen and (min-width: #{$screen-max}px) {
+      font-size: #{$font-max}px;
+    }
+  }
+@mixin position($position: absolute, $top: null, $right: null, $bottom: null, $left: null, $z-index: initial) {
+    position: $position;
+    top: $top;
+    right: $right;
+    bottom: $bottom;
+    left: $left;
+    z-index: $z-index;
+}
+
+@mixin text-shorten($numLines: 1) {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+   
+    @supports (-webkit-line-clamp: $numLines) {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: initial;
+      display: -webkit-box;
+      -webkit-line-clamp: $numLines;
+      -webkit-box-orient: vertical;
+    }
+  }
+
+//FONTS
+@font-face{
+    font-family: 'RubikBold';
+    src:local('Rubik-Bold'), url('./fonts/rubik/Rubik-Bold.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'RubikMedium';
+    src:local('Rubik-Medium'), url('./fonts/rubik/Rubik-Medium.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'RubikRegular';
+    src:local('Rubik-Regular'), url('./fonts/rubik/Rubik-Regular.ttf') format('truetype');
+}
+
+@font-face{
+    font-family: 'WorkSansMedium';
+    src:local('WorkSans-Medium'), url('./fonts/work-sans/WorkSans-Medium.ttf') format('truetype');
+}
+@font-face{
+    font-family: 'WorkSansRegular';
+    src:local('WorkSans-Regular'), url('./fonts/work-sans/WorkSans-Regular.ttf') format('truetype');
+}
+
+h1{
+    @include fluid-type(20, 52, 320, 1920);
+    font-family: 'RubikMedium';
+    margin-bottom:0.5rem;
+}
+h2{
+    @include fluid-type(18, 40, 320, 1920);
+    font-family: 'RubikMedium';
+    margin-bottom:0.5rem;
+}
+h3{
+    @include fluid-type(20, 32, 320, 1920);
+    font-family: 'RubikRegular';
+    margin-bottom:0.5rem;
+}
+h5{
+    @include fluid-type(12, 24, 320, 1920);
+    font-family: 'WorkSansRegular';
+    font-weight: lighter;
+    opacity: 0.6 ip;
+}
+p{
+    @include fluid-type(10, 18, 320, 1920);
+    font-family: 'WorkSansRegular';
+    opacity:0.6 
+}
+
+//GLOBAL CLASS
+.wrapper{
+    max-width: 100vw;
+    padding: 5vw 10vw;
+    position: relative;
+    overflow: hidden;
+    
+}
+button{
+    cursor: pointer;
+    background: $primaryColor;
+    color: $bgColor;
+    padding: 0.25rem 1rem;
+    outline: none;
+    text-transform: uppercase;
+    border-radius: 15px;
+    border: none;
+    font-family: 'WorkSansMedium';
+    margin-top: 2rem;
+    @include fluid-type(12, 32, 320, 1920);
+    &:hover{
+        opacity: 0.8;
+    }
+}
+.btn-second{
+    background: rgba(0, 0, 0, 0);
+    color: $primaryColor;
+    border:2px solid $primaryColor;
+    &:hover{
+        background: $primaryColor;
+        color: $bgColor;
+        opacity: 0.8;
+    }
+}
+input, textarea, select{
+    min-height:40px ;
+    background: #E5E1DB;
+    padding: 0.5rem 1rem;
+    color: #000;
+    border-radius: 10px;
+    border: none;
+
+    @include fluid-type(8, 18, 320, 1920);
+    font-family: 'WorkSansRegular';
+    // opacity:0.6
+    // outline: 1px solid $primaryColor;
+
+}
+select{
+    width: 100%;
+}
+.btn-container{
+    display: flex;
+    button:first-of-type{
+        margin-right: 2rem;
+        @media only screen and (max-width: 400px) {
+            margin-right: 0.5rem;
+        }
+    }
+}
+.flex{
+    display: flex;
+}
+.box-full{
+    width: 100%;
+    position: relative;
+}
+ul{
+    list-style-type: none;
+
+}
+.margin-bottom{
+    margin-bottom: 0.5rem;
+}
+.width-60{
+    width: 60%;
+}
+.btn{
+    cursor: pointer;
+    &:hover{
+        opacity: 0.5;
+    }
+}
+
+
+  
+.dot li::before {content: "•"; color: $bgColor;
+    display: inline-block; 
+    width: 1em;
+    margin-left: -1em;
+}
+.footer-box{
+    // background: red;
+    h3{
+        margin-bottom: 2rem;
+        color: $primaryColor;
+    }
+    li{
+        @include center(row);
+        justify-content: flex-start;
+        
+        img{
+            margin-right: 1rem;
+        }
+        a{
+            color: $bgColor;
+            text-decoration: none;
+        }
+        p{
+            opacity: 1;
+        }
+    }
+}
+
+.btn-circle-container{
+    list-style-type: none;
+    display: flex;
+    li{
+        cursor: pointer;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: $primaryColor;
+        margin-right: 1rem;
+        border-radius: 50%;
+        @media only screen and (max-width: 600px) {
+            width: 16px;
+            height: 16px;
+        }
+    }
+}
+a{
+    text-decoration: none;
+    color: #000;
+    cursor: pointer;
+    &:hover{
+        opacity: 0.5;
+    }
+}
+.drop-zone{
+    // height:60vh;
+    margin-top: 1rem;
+    width: 100%;
+    border: 1px dashed rgba(0, 0, 0, 0.5);
+    border-radius: 1rem;
+    @include center(column);
+    padding: 2rem;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 1rem;
+    &:hover{
+        background: #e57c2177;
+        
+    }
+    img{
+        width: 50px;
+        margin-bottom: 1rem;
+    }
+    p{
+        color: $primaryColor;
+    }
+    .selected-file{
+        color: $secondaryColor;
+    }
+    
+}

@@ -1,0 +1,446 @@
+@import 'src/style.scss';
+
+#hero{
+    padding: 0 5vw;
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    @include centerLeft;
+    overflow: hidden;
+    h5{
+        width: 40vw;
+        min-width: 300px;
+        margin-top: 1rem;
+    }
+    h1{
+        @include fluid-type(32, 80, 320, 1920);
+        margin-bottom: 0;
+    }
+    h1:last-of-type{
+        color: $primaryColor;
+    }
+    .acc{
+        width: 58vw;
+        height: 58vw;
+        min-width: 320px;
+        min-height: 320px;
+        background: $primaryColor;
+        border-radius: 50%;
+        @include position(absolute, -34%, -11%, null, null, 1);
+    }
+    .circle{
+        width: 55vw;
+        height: 55vw;
+        min-width: 300px;
+        min-height: 300px;
+        @include position(absolute, -35%, -8%, null, null, 2);
+
+        .slide-hero{
+            width: 100%;
+            height: 55vw;
+            min-height: 300px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: red;
+            img{
+                position: relative;
+                top: 10%;
+                left: -5%;
+                width: 100%;
+                height: 100%;
+                // border-radius: 50%;
+                object-fit: cover;
+            }
+        }
+        .btn-circle-container{
+            li{
+                background: $bgColor;
+            }
+            @include position(absolute, null, 20%, 4%, null, 3);
+            transform: rotate(-25deg);
+        }
+    }
+    
+
+
+    @media only screen and (max-width: 800px) {
+        justify-content: flex-end;
+        padding-bottom: 10vh;
+        .circle{
+            @include position(absolute, -10%, -8%, null, null, 2);
+            .btn-circle-container{
+                transform: rotate(-17deg);
+                @include position(absolute, null, 15%, 2%, null, 3);
+           }
+        }
+       .acc{
+        @include position(absolute, -10%, -10%, null, null, 1);
+       }
+       h5{
+           width: 100%;
+        margin-top: 0;
+       }
+    }
+
+    //new update
+
+    //width = 400 kebawah && height = 650 keatas
+    @media only screen and (max-width: 420px) and (min-height: 650px) {
+        // background: rgba(0, 0, 0, 0.404);
+        .circle{
+            width: 90vw;
+            height: 90vw;
+            .slide-hero{
+                width: 100%;
+                height: 90vw;
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+        .acc{
+            width: 100vw;
+            height: 100vw;
+        }
+        button{
+            margin-bottom: 8vh;
+        }
+    }
+
+    //width = 1400 keatas && height = 1000 keatas
+    @media only screen and (min-width: 1400px) and (min-height: 1000px) {
+        // background: #EDA464;
+        .circle{
+            @include position(absolute, -10%, -8%, null, null, 2);
+            .btn-circle-container{
+                transform: rotate(-17deg);
+                @include position(absolute, null, 17%, 7%, null, 3);
+           }
+        }
+       .acc{
+        @include position(absolute, -10%, -10%, null, null, 1);
+       }
+    }
+}
+
+
+#info{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.process{
+    @include center(column);
+    justify-content:space-between;
+    min-height: 80vh;
+    
+}
+#services{
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    .btn-circle-container{
+        @include position(absolute, null, null, 5%, 50%, 1);
+        transform: translateX(-50%);
+    }
+    .services{
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+        height: 100%;
+        margin: 5vw 0;
+        padding: 0 10vw;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        // flex-wrap: wrap;
+        background: rgba(229, 125, 33, 0.1);
+        
+        .elipse1{
+            height: 100%;
+            width: auto;
+            @include position(absolute, -40%, null, null, -15%, 1)
+        }
+        .elipse2{
+            height: 50%;
+            width: auto;
+            @include position(absolute, null, null, -40%, 20%, 1)
+        }
+        .elipse3{
+            height: 50%;
+            width: auto;
+            @include position(absolute, null, null, 10%, -10%, 1)
+        }
+    }
+    
+    // padding: 2rem 0;
+    .description{
+        height: 100%;
+        width: 50%;
+        margin: 0 2rem;
+        @include center(column);
+        align-items: flex-start;
+    }
+    img{
+        width: 20%;
+        min-width: 250px;
+        margin: auto 0;
+    }
+    h5{
+        opacity: 0.6 !important;
+        margin-top: 4rem;
+    }
+    p{
+        opacity: 0.6 !important;
+    }
+    h2{
+        margin: 0 2rem;
+    }
+    h3, h1{
+        color: $primaryColor;
+    }
+    button{
+        margin-top: 1rem;
+    }
+    .right{
+        .description{
+            align-items: flex-end;
+            text-align: right;
+        }
+    }
+    @media only screen and (max-width: 780px) {
+        height: 100vh;
+        .services{
+            align-items: flex-start;
+        }
+    }
+    @media only screen and (max-width: 600px) {
+        .services{
+            padding-top: 5vh;
+            // background: #000;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            h5{
+                margin-top: 2rem;
+            }
+            .description{
+                width: 90%;
+                height: max-content;
+                margin: 1rem 0;
+            }
+        }
+    }
+}
+.platform{
+    width: 90vw;
+    margin: auto;
+    padding: 2vw;
+    background: $secondaryColor;
+    text-align: center;
+    @include center(column);
+    justify-content: start;
+
+    border-radius: 20px;
+    h1{
+        color: $primaryColor;
+    }
+    p{
+        color: $bgColor;
+    }
+    .content_shared{
+        margin-top: 3rem;
+        width: 100%;
+        display: grid;
+        grid-gap: 3em;
+        grid-template-columns: repeat(auto-fill, minmax(7rem, 1fr));
+        // grid-template-rows: repeat(auto-fill, minmax(8rem, 1fr));
+       
+    }
+    .shared-component{
+        width: 7rem;
+        height: 7rem;
+        @include center(column);
+        .box{
+            background: $bgColor;
+            border-radius: 8px;
+            width: 100%;
+            height: 100%;
+            @include center(row);
+            img{
+                height: 50%;
+                width: 50%;
+                object-fit: contain;
+            }
+        }
+    }
+}
+#review{
+
+    h1{
+        color: $primaryColor;
+        text-align: center;
+    }
+}
+.review-box{
+    width: 30%;
+    // height: 50vh;
+    padding: 1rem 0.5rem;
+    .review{
+    @include center(column);    
+        margin: 1rem 0;
+        background: $bgColor;
+        box-shadow: 0px 4px 20px 4px rgba(0, 0, 0, 0.25);
+        border-radius: 10px;
+        padding: 1rem;
+        opacity: 0.3;
+        transition: transform 100ms ease-in-out;
+        @media only screen and (max-width: 800px) {
+            opacity: 1;
+        }
+    }
+    p{
+        margin: 2rem 0;
+    }
+    .star{
+        margin-right: 0.5rem;
+        width: 24px;
+    }
+    .star:nth-last-of-type(){
+        margin-right: 0;
+    }
+    h5{
+        opacity: 1;
+        font-weight: bolder;
+    }
+
+}
+.slick-center{
+    .review{
+         opacity: 1;
+         transform: scale(1.12);
+         position: relative;
+         z-index: 3;
+    }
+   
+}
+.slick-slider{
+    position: relative;
+    .arowLeft{
+        @include position(absolute, 50%, null, null, -5%, 2);
+        transform: translateY(-50%);
+    }
+    .arowRight{
+        @include position(absolute, 50%, -5%, null, null, 2);
+        transform: translateY(-50%);
+    }
+}
+#portfolio{
+    min-height: 100vh;
+    margin: 5vh 0 5vh 0;
+    .bg{
+        width: 70%;
+        height: 120%;
+        @include position(absolute, 0, 0, 0, null, 1);
+        background: $primaryColor;
+    }
+    .box-full{
+        margin-top: 2rem;
+        padding: 3rem 1rem 0 0;
+        height: 10%;
+        .portfolio-content{
+            display: flex;
+            // flex-wrap: wrap;
+            .arrowCustom{
+                height: 4vw;
+                min-height: 40px;
+                padding: 0 1rem;
+                align-items: center;
+                display: flex;
+                background: #EDA464;
+                width: 10%;
+                min-width: 60px;
+                position: relative;
+                z-index: 100;
+                svg{
+                    height: 60%;
+                }
+                svg:first-of-type{
+                    margin-right: 0.5rem;
+                }
+            }
+            .title{
+                width: 80%;
+                background: #EDA464;
+                height: 4vw;
+                min-height: 40px;
+                padding: 0 2rem 0 3rem;
+                display: flex;
+                align-items: center;
+            }
+            .content{
+                position: relative;
+                z-index: 2;
+                width: 50%;
+                min-width: 200px
+            }
+            p{
+                color: #000;
+                padding-left: 3rem;
+            }
+            p:last-of-type{
+                color: $bgColor;
+                opacity: 1;
+            }
+            .flex{
+                margin-left: 3rem;
+            }
+            @media only screen and (max-width: 700px) {
+                flex-wrap: wrap;
+                .content{
+                    margin-left: 20vw;
+                    width: 70%;
+                }
+            }
+            @media only screen and (max-width: 400px) {
+                .content{
+                    margin-left: 0;
+                    width: 100%;
+                    .title, p {
+                        padding-left: 1rem;
+                    }
+                    .social{
+                        margin: 0.5rem 1rem;
+                    }
+                }
+            }
+        }
+    }
+    @media only screen and (max-width: 400px) {
+        .bg{
+            width: 100%;
+        }
+        .box-full{
+            padding: 1rem 0;
+        }
+    }
+}
+.slider-portfolio{
+    width: 50%;
+    position: relative;
+    z-index: 2;
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    @media only screen and (max-width: 700px) {
+            width: 80%;
+    }
+    @media only screen and (max-width: 400px) {
+        width: 100%;
+}
+}
+
